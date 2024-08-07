@@ -1,36 +1,17 @@
-/* eslint-disable */
 import "bootstrap";
 import "./style.css";
 import "./assets/img/rigo-baby.jpg";
 import "./assets/img/4geeks.ico";
-import countryData from "./peruData.js";
-import validation from "./validation.js";
-import validateCard from "./validateCard.js";
+import handleInputChange from "./Utils/handleInputChange";
+import handleForm from "./Utils/handleForm";
 
-window.onload = async function() {
-  const states = document.querySelector(".main-states");
-  const form = document.querySelector("form");
-  const inputCard = document.querySelector("#inputCard");
-  const cvc = document.querySelector("#inputPassword4");
+export const inputs = document.querySelectorAll("input");
+export const form = document.querySelector("form");
 
-  function validateCvc(e) {
-    if (e.target.value.length === 3) {
-      alert("cvv ingresado correctamente");
-    } else {
-      alert("cvv Incorrecto");
-    }
-  }
-
-  cvc.addEventListener("blur", validateCvc);
-
-  const peru = await countryData();
-
-  let template = "<option>Pick A state</option>";
-
-  inputCard.addEventListener("blur", validateCard);
-  form.addEventListener("submit", validation);
-  peru.forEach((state) => {
-    template += `<option>${state.state_name}</option>`;
+window.onload = function() {
+  inputs.forEach((input) => {
+    input.addEventListener("input", handleInputChange);
   });
-  states.innerHTML = template;
+
+  form.addEventListener("submit", handleForm);
 };
