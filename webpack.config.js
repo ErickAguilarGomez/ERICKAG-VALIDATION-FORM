@@ -1,15 +1,16 @@
 const path = require('path');
 
-const PrettierPlugin = require("./_utils/prettier.js");
+// Elimina o comenta la línea de importación de PrettierPlugin
+// const PrettierPlugin = require("./_utils/prettier.js");
 const cleanStack = require("./_utils/clean-stack.js");
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
 const WebpackErrorReporting = require('bc-webpack-error-reporting-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const port = 3000;
 let publicUrl = `http://localhost:${port}`;
-if(process.env.GITPOD_WORKSPACE_URL){
+if (process.env.GITPOD_WORKSPACE_URL) {
   const [schema, host] = process.env.GITPOD_WORKSPACE_URL.split('://');
   publicUrl = `${port}-${host}`;
 }
@@ -74,8 +75,9 @@ module.exports = {
         filename: "index.html",
         template: "src/index.html"
     }),
-    new PrettierPlugin({
-        failSilently: true
-    }),
+    // Elimina o comenta esta línea para evitar errores
+    // new PrettierPlugin({
+    //     failSilently: true
+    // }),
   ]
 };
