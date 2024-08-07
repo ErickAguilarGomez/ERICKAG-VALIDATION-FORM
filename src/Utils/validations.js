@@ -17,6 +17,5 @@ export default function validations(selectedInput, regex) {
 
   validationInput.addEventListener("blur", validateInput);
 
-  // Retorna la función para poder usarla externamente
   return () => validateInput({ target: validationInput });
 }
